@@ -1,0 +1,8 @@
+development: &default_settings
+  adapter: postgresql
+  encoding: unicode
+  database: consignmentdb
+  pool: 5
+  username: consignment_admin
+  password: SashaRoz9
+  host: localhost
