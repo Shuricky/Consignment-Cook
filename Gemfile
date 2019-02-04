@@ -37,6 +37,18 @@ gem 'json'
 
 gem 'griddler'
 
+gem 'ruby-gmail'
+
+gem 'sendgrid-ruby'
+
+gem 'google-api-client'
+
+gem 'mail'
+
+gem 'mime'
+
+gem 'rake'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
