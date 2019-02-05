@@ -1,5 +1,5 @@
 class EmailProcessor
   def self.process(email)
-    Post.create!({ body: email.body, email: email.from })
+    Shoe.create!({sku: 'EmailParse', size: 10, quantity: 3, price: 100, user_id: 1})
   end
 end
