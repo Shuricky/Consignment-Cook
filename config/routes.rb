@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  mount_griddler
+  resources :incoming_mails, only: [:create]
+
 
   devise_for :users
   get 'welcome/index'
