@@ -1,9 +1,11 @@
+require 'sendgrid-ruby'
+include SendGrid
+
 class ShoesController < ApplicationController
 
   #before_action :require_login
 
-  require 'sendgrid-ruby'
-  include SendGrid
+
 
   before_action :set_shoe, only: [:show, :edit, :update, :destroy]
 
