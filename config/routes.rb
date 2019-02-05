@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount_griddler
+
   devise_for :users
   get 'welcome/index'
   root 'welcome#index'
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
     resources :shoes, only: [:listed, :sold, :index, :show, :new, :create]
   end
 
-  
+
 
  #resources :shoes
 

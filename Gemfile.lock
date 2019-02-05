@@ -108,6 +108,9 @@ GEM
     griddler (1.5.2)
       htmlentities
       rails (>= 3.2.0)
+    griddler-sendgrid (1.1.0)
+      griddler (>= 1.5.2)
+      mail (>= 2.7.0)
     hashie (3.6.0)
     htmlentities (4.3.4)
     httpclient (2.8.3)
@@ -294,6 +297,7 @@ DEPENDENCIES
   devise
   google-api-client
   griddler
+  griddler-sendgrid
   jbuilder (~> 2.5)
   json
   listen (>= 3.0.5, < 3.2)

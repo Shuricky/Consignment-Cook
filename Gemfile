@@ -37,6 +37,8 @@ gem 'json'
 
 gem 'griddler'
 
+gem 'griddler-sendgrid'
+
 gem 'ruby-gmail'
 
 gem 'sendgrid-ruby'
