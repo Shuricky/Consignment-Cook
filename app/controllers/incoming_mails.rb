@@ -8,6 +8,7 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug params[:plain]
 
     style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(\d+)/).flatten
+    #style, price, stock = ary[0].sub(/Style /, ''), ary[1].sub(/Price \$/, ''), ary[2].sub(/Stock # /, '')
 
     Rails.logger.debug style
     Rails.logger.debug price
@@ -15,7 +16,7 @@ class IncomingMailsController < ApplicationController
 
     tokens = params[:plain].split
     spot = tokens.index("Quantity")
-    Rails.logger.debug tokens[spot+1]
+    Rails.logger.debug tokens[spot+2]
 
   end
 end
