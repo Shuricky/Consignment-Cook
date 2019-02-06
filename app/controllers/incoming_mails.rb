@@ -10,9 +10,9 @@ class IncomingMailsController < ApplicationController
     style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
     #style, price, stock = ary[0].sub(/Style /, ''), ary[1].sub(/Price \$/, ''), ary[2].sub(/Stock # /, '')
 
-    style.chomp
-    price.chomp
-    stock.chomp
+    style.strip
+    price.strip
+    stock.strip
 
     Rails.logger.debug style
     Rails.logger.debug price
