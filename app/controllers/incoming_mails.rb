@@ -10,9 +10,9 @@ class IncomingMailsController < ApplicationController
     style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
     #style, price, stock = ary[0].sub(/Style /, ''), ary[1].sub(/Price \$/, ''), ary[2].sub(/Stock # /, '')
 
-    style.strip
+    stock.gsub("\r", "")
     price.strip
-    stock.strip
+
 
     Rails.logger.debug style
     Rails.logger.debug price
@@ -28,7 +28,7 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug sizeOther
 
 
-    shoe = Shoe.where(:size => "10").first
+    shoe = Shoe.where(:size => "7").first
     shoe.update_column(:stockId, stock)
 
   end
