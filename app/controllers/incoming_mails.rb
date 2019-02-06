@@ -21,8 +21,8 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug sizeOther
 
 
-    shoe = Shoe.where(:sku => style, :size => sizeOther, :price => price)
-    #shoe.stockId = stock
+    shoe = Shoe.where(:size => sizeOther, :price => price)
+    shoe.stockId = stock
 
   end
 end
