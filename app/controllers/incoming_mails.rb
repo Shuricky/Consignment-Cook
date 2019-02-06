@@ -28,7 +28,7 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug sizeOther
 
 
-    shoe = Shoe.where(:size => sizeOther).first
+    shoe = Shoe.where(:size => 10).first
     shoe.update_column(:stockId, stock)
 
   end
