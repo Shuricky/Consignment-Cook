@@ -51,6 +51,8 @@ gem 'mime'
 
 gem 'rake'
 
+gem 'nokogiri'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
