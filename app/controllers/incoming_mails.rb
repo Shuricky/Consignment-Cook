@@ -13,7 +13,9 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug price
     Rails.logger.debug stock
 
-
+    tokens = params[:plain].split
+    spot = tokens.index("Quantity")
+    Rails.logger.debug tokens[spot+1]
 
   end
 end
