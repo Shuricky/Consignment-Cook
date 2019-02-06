@@ -12,6 +12,7 @@ class IncomingMailsController < ApplicationController
 
     Rails.logger.debug style
     Rails.logger.debug price
+    Rails.logger.debug price.to_f
     Rails.logger.debug stock
 
     tokens = params[:plain].split
@@ -21,7 +22,7 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug sizeOther
 
 
-    shoe = Shoe.where(:sku => style, :price => price, :size => sizeOther).first
+    shoe = Shoe.where(:size => sizeOther).first
     shoe.update_column(:stockId, stock)
 
   end
