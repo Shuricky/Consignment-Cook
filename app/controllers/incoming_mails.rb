@@ -22,7 +22,7 @@ class IncomingMailsController < ApplicationController
 
 
     shoe = Shoe.where(:size => sizeOther).first
-    shoe.stockId = stock
+    shoe.update_column(:stockId, stock)
 
   end
 end
