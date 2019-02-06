@@ -16,8 +16,9 @@ class IncomingMailsController < ApplicationController
 
     tokens = params[:plain].split
     spot = tokens.index("Quantity")
-    size = tokens[spot+1]
-    Rails.logger.debug size
+    sizeOther = tokens[spot+1]
+
+    Rails.logger.debug sizeOther
 
 
     shoe = Shoe.find(:conditions => ["sku = ? AND size = ? AND price = ?", style, size, price.to_f])
