@@ -13,7 +13,7 @@ class IncomingMailsController < ApplicationController
     #Rails.logger.info params[:headers]['Return-Path'] #=> "from@example.com"
     #Rails.logger.info params[:plain] #=> "Test with HTML."
     #Rails.logger.info params[:plain] #=> "<html><head>\r\n<meta http-equiv=\"content-type\" content=\"text/html; charset=ISO-8859-1\"></head><body\r\n bgcolor=\"#FFFFFF\" text=\"#000000\">\r\nTest with <span style=\"font-weight: bold;\">HTML</span>.<br>\r\n</body>\r\n</html>"
-    style, price, stock = params[head].scan(/^(?:Style |Price \$|Stock \# )(\d+)/).flatten
+    style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(\d+)/).flatten
     puts style
     puts price
     puts stock
