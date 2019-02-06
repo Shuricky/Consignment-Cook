@@ -22,7 +22,7 @@ class IncomingMailsController < ApplicationController
 
 
     shoe = Shoe.where(:sku => style, :size => sizeOther, :price => price)
-    shoe.stockId = stock
+    #shoe.stockId = stock
 
   end
 end
