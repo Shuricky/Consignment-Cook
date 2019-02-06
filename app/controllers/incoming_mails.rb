@@ -17,8 +17,10 @@ class IncomingMailsController < ApplicationController
     tokens = params[:plain].split
     spot = tokens.index("Quantity")
     size = tokens[spot+1]
+    Rails.logger.debug size
 
-    shoe = Shoe.first(:conditions => ["sku = ? AND size = ? AND price = ?", style, size, price.to_f])
+
+    shoe = Shoe.find(:conditions => ["sku = ? AND size = ? AND price = ?", style, size, price.to_f])
     shoe.stockId = stock
 
   end
