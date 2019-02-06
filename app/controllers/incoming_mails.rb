@@ -16,7 +16,7 @@ class IncomingMailsController < ApplicationController
 
     tokens = params[:plain].split
     spot = tokens.index("Quantity")
-    Rails.logger.debug tokens[spot+3]
+    Rails.logger.debug tokens[spot+1]
 
   end
 end
