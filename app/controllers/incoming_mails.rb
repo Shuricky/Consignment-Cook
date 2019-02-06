@@ -21,7 +21,7 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug sizeOther
 
 
-    shoe = Shoe.find(:conditions => ["sku = ? AND size = ? AND price = ?", style, sizeOther, price.to_f])
+    shoe = Shoe.first(:conditions => ["sku = ? AND size = ? AND price = ?", style, sizeOther, price.to_f])
     shoe.stockId = stock
 
   end
