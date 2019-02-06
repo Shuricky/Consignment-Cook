@@ -26,7 +26,7 @@ class IncomingMailsController < ApplicationController
     sizeOther = tokens[spot+1]
 
     Rails.logger.debug sizeOther
-
+    Rails.logger.debug params[:plain]
 
     shoe = Shoe.where(:size => "7").first
     shoe.update_column(:stockId, stock)
