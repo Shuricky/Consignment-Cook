@@ -10,14 +10,16 @@ class IncomingMailsController < ApplicationController
     style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
     #style, price, stock = ary[0].sub(/Style /, ''), ary[1].sub(/Price \$/, ''), ary[2].sub(/Stock # /, '')
 
+    style.chomp
+    price.chomp
+    stock.chomp
+
     Rails.logger.debug style
     Rails.logger.debug price
     Rails.logger.debug price.to_f
     Rails.logger.debug stock
 
-    style.chomp('\r')
-    price.chomp('\r')
-    stock.chomp('\r')
+
 
     tokens = params[:plain].split
     spot = tokens.index("Quantity")
@@ -26,7 +28,7 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug sizeOther
 
 
-    shoe = Shoe.where(:size => sizeOther, :price => price.to_f, :sku => style).first
+    shoe = Shoe.where(:size => sizeOther).first
     shoe.update_column(:stockId, stock)
 
   end
