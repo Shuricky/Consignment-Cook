@@ -12,12 +12,12 @@ class IncomingMailsController < ApplicationController
     #Rails.logger.info params[:headers]['Received'] #=> {"0"=>"by 10.52.90.229 with SMTP id bz5cs75582vdb; Mon, 16 Jan 2012 09:00:07 -0800", "1"=>"by 10.216.131.153 with SMTP id m25mr5479776wei.9.1326733205283; Mon, 16 Jan 2012 09:00:05 -0800", "2"=>"from mail-wi0-f170.google.com (mail-wi0-f170.google.com [209.85.212.170]) by mx.google.com with ESMTPS id u74si9614172weq.62.2012.01.16.09.00.04 (version=TLSv1/SSLv3 cipher=OTHER); Mon, 16 Jan 2012 09:00:04 -0800"}
     #Rails.logger.info params[:headers]['Received']['0'] #=> "by 10.52.90.229 with SMTP id bz5cs75582vdb; Mon, 16 Jan 2012 09:00:07 -0800"
     #Rails.logger.info params[:headers]['Return-Path'] #=> "from@example.com"
-    Rails.logger.info params[:plain] #=> "Test with HTML."
+    puts params[:plain] #=> "Test with HTML."
     #Rails.logger.info params[:plain] #=> "<html><head>\r\n<meta http-equiv=\"content-type\" content=\"text/html; charset=ISO-8859-1\"></head><body\r\n bgcolor=\"#FFFFFF\" text=\"#000000\">\r\nTest with <span style=\"font-weight: bold;\">HTML</span>.<br>\r\n</body>\r\n</html>"
     style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(\d+)/).flatten
-    Rails.logger.info style
-    Rails.logger.info price
-    Rails.logger.info stock
+    puts style
+    puts price
+    puts stock
 
   end
 end
