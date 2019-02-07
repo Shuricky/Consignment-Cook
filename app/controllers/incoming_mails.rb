@@ -7,33 +7,33 @@ class IncomingMailsController < ApplicationController
     #Rails.logger.debug "Received: #{params[:headers][:subject]} for #{params[:envelope][:to]}"
     #Rails.logger.debug params[:plain]
 
-    #if params[:headers][:subject] = "Fwd: Your shoes are listed!"
+    if params[:headers][:subject] = "Fwd: Your shoes are listed!"
 
+      style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
+      style.chomp!
+      price.chomp!
+      stock.chomp!
+      tokens = params[:plain].split
+      spot = tokens.index("Quantity")
+      sizeOther = tokens[spot+1]
+      shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false").first
+      shoe.update_column(:stockId, stock)
 
-    #elseif params[:headers][:subject] = "Fwd: Your shoes have sold!"
+    elseif params[:headers][:subject] = "Fwd: Your shoes have sold!"
+      stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
+      stock.chomp!
+      Rails.logger.debug stock
+      shoe = Shoe.where(:stockId => stock)
+      shoe.update_column(:sold, "true")
 
-    style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
+    end
     #style, price, stock = ary[0].sub(/Style /, ''), ary[1].sub(/Price \$/, ''), ary[2].sub(/Stock # /, '')
 
-    style.chomp!
-    price.chomp!
-    stock.chomp!
-
-    Rails.logger.debug style
-    Rails.logger.debug price
-    Rails.logger.debug price.to_f
-    Rails.logger.debug stock
 
 
 
-    tokens = params[:plain].split
-    spot = tokens.index("Quantity")
-    sizeOther = tokens[spot+1]
 
-    Rails.logger.debug sizeOther
 
-    #shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther).first
-    #shoe.update_column(:stockId, stock)
 
   end
 end
