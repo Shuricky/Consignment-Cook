@@ -6,7 +6,7 @@ class IncomingMailsController < ApplicationController
     #Rails.logger.debug params.inspect
     #Rails.logger.debug "Received: #{params[:headers][:subject]} for #{params[:envelope][:to]}"
     #Rails.logger.debug params[:plain]
-
+    Rails.logger.debug params[:headers][:subject]
     if params[:headers][:subject] == "Fwd: Your shoes are listed!"
 
       style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
