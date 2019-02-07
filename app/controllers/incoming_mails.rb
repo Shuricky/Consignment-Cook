@@ -18,15 +18,19 @@ class IncomingMailsController < ApplicationController
       spot = tokens.index("Quantity")
       sizeOther = tokens[spot+1]
       shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false").first
-      shoe.update_column(:stockId, stock)
+      if(shoe != nil)
+        shoe.update_column(:stockId, stock)
+      end
 
     elsif params[:headers]['Subject'].strip == "Fwd: Your shoes have sold!"
       stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
 
       stock[0].chomp!
-      
+
       shoe = Shoe.where(:stockId => stock).first
-      shoe.update_column(:sold, "true")
+      if (shoe != nil)
+        shoe.update_column(:sold, "true")
+      end
     end
 
     #style, price, stock = ary[0].sub(/Style /, ''), ary[1].sub(/Price \$/, ''), ary[2].sub(/Stock # /, '')
