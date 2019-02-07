@@ -7,7 +7,7 @@ class IncomingMailsController < ApplicationController
     #Rails.logger.debug "Received: #{params[:headers][:subject]} for #{params[:envelope][:to]}"
     #Rails.logger.debug params[:plain]
 
-    if params[:headers][:subject] = "Fwd: Your shoes are listed!"
+    if params[:headers][:subject] == "Fwd: Your shoes are listed!"
 
       style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
       style.chomp!
@@ -19,7 +19,7 @@ class IncomingMailsController < ApplicationController
       shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false").first
       shoe.update_column(:stockId, stock)
 
-    elseif params[:headers][:subject] = "Fwd: Your shoes have sold!"
+    elseif params[:headers][:subject] == "Fwd: Your shoes have sold!"
       stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
       stock.chomp!
       Rails.logger.debug stock
