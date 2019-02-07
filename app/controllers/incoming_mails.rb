@@ -22,7 +22,7 @@ class IncomingMailsController < ApplicationController
 
     elsif params[:headers]['Subject'].strip == "Fwd: Your shoes have sold!"
       stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
-      stock.chomp!
+      stock[1].chomp!
       Rails.logger.debug stock
       shoe = Shoe.where(:stockId => stock).first
       shoe.update_column(:sold, "true")
