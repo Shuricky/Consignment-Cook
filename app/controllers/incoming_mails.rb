@@ -20,6 +20,7 @@ class IncomingMailsController < ApplicationController
       shoe.update_column(:stockId, stock)
 
     elseif params[:headers][:subject] == "Fwd: Your shoes have sold!"
+      puts 'Hello'
       stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
       stock.chomp!
       Rails.logger.debug stock
