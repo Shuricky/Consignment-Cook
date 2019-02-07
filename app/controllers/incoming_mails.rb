@@ -8,7 +8,7 @@ class IncomingMailsController < ApplicationController
     #Rails.logger.debug params[:plain]
     Rails.logger.debug params[:headers]['Subject'].chomp
     Rails.logger.debug params[:headers]['Subject'].chomp == "Fwd: Your shoes are listed!"
-    if params[:headers]['Subject'].chomp == "Fwd: Your shoes have sold!"
+    if params[:headers]['Subject'].strip == "Fwd: Your shoes have sold!"
 
       style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
       style.chomp!
@@ -29,12 +29,6 @@ class IncomingMailsController < ApplicationController
 
     end
     #style, price, stock = ary[0].sub(/Style /, ''), ary[1].sub(/Price \$/, ''), ary[2].sub(/Stock # /, '')
-
-
-
-
-
-
 
   end
 end
