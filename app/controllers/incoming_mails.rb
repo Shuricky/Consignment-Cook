@@ -26,9 +26,10 @@ class IncomingMailsController < ApplicationController
       stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
 
       stock[0].chomp!
-
+      Rails.logger.debug stock[0]
       shoe = Shoe.where(:stockId => stock).first
       if (shoe != nil)
+        Rails.logger.debu
         shoe.update_column(:sold, "true")
       end
     end
