@@ -29,7 +29,6 @@ class IncomingMailsController < ApplicationController
       Rails.logger.debug stock[0]
       shoe = Shoe.where(:stockId => stock).first
       if (shoe != nil)
-        Rails.logger.debu
         shoe.update_column(:sold, "true")
       end
     end
