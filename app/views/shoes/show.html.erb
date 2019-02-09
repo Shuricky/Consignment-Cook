@@ -17,6 +17,16 @@
   <%= @shoe.price %>
 </p>
 
+<p>
+  <strong>Sold:</strong>
+  <% if @shoe.sold == true %>
+     Sold
+  <% else %>
+     Listed 
+  <% end %>
+</p>
+
+
 
 <%# link_to 'Edit', edit_shoes_path(@shoe) %>
 <%= link_to 'Back', shoes_path %>
