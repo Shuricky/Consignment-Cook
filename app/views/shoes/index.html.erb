@@ -24,9 +24,9 @@
         <td><%= 1 %></td>
         <td><%= shoe.price %></td>
         <% if @shoe.sold == true %>
-          <td><%=Sold%></td>
+          <td><%='Sold'%></td>
         <% else %>
-          <td><%=Listed%></td>
+          <td><%='Listed'%></td>
         <% end %>
         <td><%= link_to 'Show', shoe %></td>
         <td><%# link_to 'Edit', edit_shoe_path(shoe) %></td>
