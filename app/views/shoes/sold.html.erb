@@ -31,7 +31,7 @@
         <td><%# link_to 'Destroy', shoe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
 
-    <%end%>
+    <% end %>
     <% end %>
   </tbody>
 </table>
@@ -39,3 +39,7 @@
 <br>
 
 <%= link_to 'New Shoe', new_shoe_path %>
+<br>
+<%= link_to "Listed Shoes", controller: "shoes", action: "listed"%>
+<br>
+<%= link_to "Sold Shoes", controller: "shoes", action: "sold"%>

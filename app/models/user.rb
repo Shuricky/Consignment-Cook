@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :code, inclusion: {in: ["394024"], message: "%{value} is incorrect" }
 end
