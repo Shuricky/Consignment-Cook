@@ -17,9 +17,19 @@
   <%= @shoe.price %>
 </p>
 
+<p>
+  <strong>Sold:</strong>
+  <% if @shoe.sold == true %>
+    <%='Sold'%>
+  <% else %>
+    <%='Listed'%>
+  <% end %>
+</p>
 
-
-
+<p>
+  <strong>Stock ID:</strong>
+  <%= @shoe.stockId %>
+</p>
 
 
 
