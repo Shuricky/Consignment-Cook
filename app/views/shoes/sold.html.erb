@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Sold Shoes</h1>
+<div class="title-container">
+  <h1>Sold Shoes</h1>
+  <%= link_to 'New Shoe', new_shoe_path, class: "btn btn-primary" %>
+</div>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Sku</th>
@@ -38,8 +41,7 @@
 
 <br>
 
-<%= link_to 'New Shoe', new_shoe_path %>
-<br>
+
 <%= link_to "Listed Shoes", controller: "shoes", action: "listed"%>
 <br>
 <%= link_to "Sold Shoes", controller: "shoes", action: "sold"%>

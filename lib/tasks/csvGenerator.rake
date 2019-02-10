@@ -36,7 +36,7 @@ task :data_dump => :environment do
   body:"Test Body")
   #msg = m.encoded
 
-  m.attachments['shoes.csv'] = {mime_type: 'results.csv', content: CSV}
+  m.attachments['shoes.csv'] = { mime_type: 'text/csv', content: File.read("/Users/Shurick/Documents/Documents\ -\ Alex’s\ MacBook\ Air/Web\ Development/Learning\ Ruby/Consignment\ V2/consignment/results.csv") }
 
   message_object = Google::Apis::GmailV1::Message.new(raw:m.to_s)
   service.send_user_message("me", message_object)
