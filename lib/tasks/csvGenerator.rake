@@ -7,12 +7,7 @@ require 'mail'
 require 'mime'
 
 task :data_dump => :environment do
-  CSV.open("results.csv","w") do |csv|
-    Shoe.all.each_with_index do |sneaker,index|
-      puts "done #{index}"
-      csv << [sneaker.sku, sneaker.size, sneaker.price]
-    end
-  end
+  csv = Shoe.to_csv
 
   OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'.freeze
   APPLICATION_NAME = 'Gmail API Ruby Quickstart'.freeze
@@ -32,11 +27,11 @@ task :data_dump => :environment do
   m = Mail.new(
   to: "alexroz0909@gmail.com",
   from: "cookszn121@gmail.com",
-  subject: "Test Subject",
-  body:"Test Body")
+  subject: "FC Consignment CSV",
+  body:"Attached is CSV of shoes")
   #msg = m.encoded
 
-  m.attachments['shoes.csv'] = { mime_type: 'text/csv', content: File.read("/Users/Shurick/Documents/Documents\ -\ Alex’s\ MacBook\ Air/Web\ Development/Learning\ Ruby/Consignment\ V2/consignment/results.csv") }
+  m.attachments['shoes.csv'] = { mime_type: 'text/csv', content: csv }
 
   message_object = Google::Apis::GmailV1::Message.new(raw:m.to_s)
   service.send_user_message("me", message_object)
