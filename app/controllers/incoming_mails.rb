@@ -23,11 +23,11 @@ class IncomingMailsController < ApplicationController
       spot2 = tokens.index("#")
 
       for i in spot2..quantityNum+spot2
-        puts tokens[i+1]
+        Rails.logger.debug tokens[i+1]
       end
 
-      puts sizeOther
-      puts quantityNum
+      Rails.logger.debug sizeOther
+      Rails.logger.debug quantityNum
 =begin
       shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false").first
       if(shoe != nil)
