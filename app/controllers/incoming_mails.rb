@@ -23,7 +23,7 @@ class IncomingMailsController < ApplicationController
       spot2 = tokens.index("#")
 
       for i in spot2..(quantityNum.to_i)+(spot2)-1
-        shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false").first
+        shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false", :stockId => nil).first
         if(shoe != nil)
           shoe.update_column(:stockId, tokens[i+1].chomp(","))
         end
