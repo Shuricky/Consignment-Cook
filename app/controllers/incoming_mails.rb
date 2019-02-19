@@ -25,8 +25,8 @@ class IncomingMailsController < ApplicationController
 
       spot2 = tokens.index("#")
 
-      for i in spot2..(quantityNum.to_i)+spot2
-        Rails.logger.debug tokens[i+1]
+      for i in spot2..(quantityNum.to_i)+(spot2)-1
+        Rails.logger.debug tokens[i+1].chomp(",")
       end
 
 
