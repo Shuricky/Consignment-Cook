@@ -14,14 +14,26 @@ class IncomingMailsController < ApplicationController
       style.chomp!
       price.chomp!
       stock.chomp!
+
       tokens = params[:plain].split
       spot = tokens.index("Quantity")
       sizeOther = tokens[spot+1]
+      quantityNum = tokens[spot+2]
+
+      spot2 = tokens.index("#")
+
+      for i in spot2..quantityNum+spot2
+        puts tokens[i+1]
+      end
+
+      puts sizeOther
+      puts quantityNum
+=begin
       shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false").first
       if(shoe != nil)
         shoe.update_column(:stockId, stock)
       end
-
+=end
     elsif params[:headers]['Subject'].strip == "Fwd: Your shoes have sold!"
       stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
 
