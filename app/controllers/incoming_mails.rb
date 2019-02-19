@@ -20,13 +20,13 @@ class IncomingMailsController < ApplicationController
       sizeOther = tokens[spot+1]
       quantityNum = tokens[spot+2]
 
-      Rails.logger.debug sizeOther
-      Rails.logger.debug quantityNum
-
       spot2 = tokens.index("#")
 
       for i in spot2..(quantityNum.to_i)+(spot2)-1
-        Rails.logger.debug tokens[i+1].chomp(",")
+        shoe = Shoe.where(:sku => tokens[i+1].chomp(","), :price => price.to_f, :size => sizeOther, :sold => "false").first
+        if(shoe != nil)
+          shoe.update_column(:stockId, stock)
+        end
       end
 
 
