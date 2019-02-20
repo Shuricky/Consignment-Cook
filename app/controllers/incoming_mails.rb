@@ -39,10 +39,17 @@ class IncomingMailsController < ApplicationController
       end
 =end
     elsif params[:headers]['Subject'].strip == "Your shoes have sold!"
-      stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
+      #stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
 
-      stock[0].chomp!
-      Rails.logger.debug stock[0]
+      #stock[0].chomp!
+      #Rails.logger.debug stock[0]
+
+      tokens = params[:plain].split
+      spot = tokens.index("#")
+      stock = tokens[spot+1]
+
+      Rails.logger.debug stock
+
       shoe = Shoe.where(:stockId => stock).first
       if (shoe != nil)
         shoe.update_column(:sold, "true")
