@@ -10,7 +10,7 @@ class IncomingMailsController < ApplicationController
     #Rails.logger.debug params[:plain]
     Rails.logger.debug params[:headers]['Subject'].strip
     Rails.logger.debug params[:headers]['Subject'].strip == "Your shoes have sold!"
-    if params[:headers]['Subject'].strip == "Your shoes are listed!"
+    if (params[:headers]['Subject'].strip == "Your shoes are listed!") OR (params[:headers]['Subject'].strip == "Fwd: Your shoes are listed")
 
       #style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
       #style.chomp!
