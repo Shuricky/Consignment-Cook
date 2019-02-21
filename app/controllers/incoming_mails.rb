@@ -26,8 +26,8 @@ class IncomingMailsController < ApplicationController
 
       spot2 = tokens.index("#")
 
-      Rails.logger.debug tokens[spot2-8]
-      Rails.logger.debug tokens[spot2-6]
+      Rails.logger.debug tokens[spot2-9]
+      Rails.logger.debug tokens[spot2-7]
 
 =begin
 
