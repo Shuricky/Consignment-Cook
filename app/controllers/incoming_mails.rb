@@ -29,7 +29,10 @@ class IncomingMailsController < ApplicationController
       Rails.logger.debug tokens[spot2-9]
       Rails.logger.debug tokens[spot2-7]
 
-=begin
+      style = tokens[spot2-9]
+      price = tokens[spot2-7].chomp("$")
+
+
 
       for i in spot2..(quantityNum.to_i)+(spot2)-1
         shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false", :stockId => nil).first
@@ -37,7 +40,7 @@ class IncomingMailsController < ApplicationController
           shoe.update_column(:stockId, tokens[i+1].chomp(","))
         end
       end
-=end
+
 
 =begin
       shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false").first
