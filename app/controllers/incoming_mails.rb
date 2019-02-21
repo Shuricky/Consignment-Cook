@@ -12,10 +12,12 @@ class IncomingMailsController < ApplicationController
     Rails.logger.debug params[:headers]['Subject'].strip == "Your shoes have sold!"
     if params[:headers]['Subject'].strip == "Your shoes are listed!"
 
-      style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
-      style.chomp!
-      price.chomp!
-      stock.chomp!
+      #style, price, stock = params[:plain].scan(/^(?:Style |Price \$|Stock \# )(.+)/).flatten
+      #style.chomp!
+      #price.chomp!
+      #stock.chomp!
+
+
 
       tokens = params[:plain].split
       spot = tokens.index("Quantity")
@@ -24,13 +26,18 @@ class IncomingMailsController < ApplicationController
 
       spot2 = tokens.index("#")
 
+      Rails.logger.debug tokens[spot2-8]
+      Rails.logger.debug tokens[spot2-6]
+
+=begin
+
       for i in spot2..(quantityNum.to_i)+(spot2)-1
         shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false", :stockId => nil).first
         if(shoe != nil)
           shoe.update_column(:stockId, tokens[i+1].chomp(","))
         end
       end
-
+=end
 
 =begin
       shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false").first
