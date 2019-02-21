@@ -29,8 +29,8 @@ class IncomingMailsController < ApplicationController
       Rails.logger.debug tokens[spot2-9]
       Rails.logger.debug tokens[spot2-7]
 
-      style = tokens[spot2-9]
-      price = tokens[spot2-7].delete("$")
+      style = tokens[spot2-9].strip
+      price = tokens[spot2-7].delete("$").strip
 
 
 
