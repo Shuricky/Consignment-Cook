@@ -30,7 +30,7 @@ class IncomingMailsController < ApplicationController
       Rails.logger.debug tokens[spot2-7]
 
       style = tokens[spot2-9]
-      price = tokens[spot2-7].chomp("$")
+      price = tokens[spot2-7].delete("$")
 
 
 
