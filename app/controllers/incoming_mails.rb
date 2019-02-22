@@ -63,11 +63,16 @@ class IncomingMailsController < ApplicationController
       spot = tokens.index("#")
       stock = tokens[spot+1]
 
+      price2 = tokens[spot-7].delete("$").strip
+
       Rails.logger.debug stock
 
       shoe = Shoe.where(:stockId => stock).first
       if (shoe != nil)
         shoe.update_column(:sold, "true")
+        if shoe.price != price2.to_f
+          shoe.price = price2.to_f
+        end
       end
     end
 
