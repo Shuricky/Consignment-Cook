@@ -1,5 +1,5 @@
 
-task :initiateSales => :environment do:
+task :initiateSales => :environment do
   for i in User.pluck(:id)
     countPrice = 0
     for j in Shoe.where(user_id: i).pluck(:price)
