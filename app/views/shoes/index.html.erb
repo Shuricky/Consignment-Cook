@@ -4,7 +4,7 @@
   <% userNeeded = User.where(:id => current_user.id).first %>
   <% sales = userNeeded.sold %>
   <%= "Total Sold:"%>
-  <%= sales %>
+  <%= sales.number_to_currency %>
   <%= link_to 'New Shoe', new_shoe_path, class: "btn btn-primary" %>
 
 </div>
