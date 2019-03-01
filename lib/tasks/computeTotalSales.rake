@@ -2,7 +2,7 @@
 task :initiateSales => :environment do
   for i in User.pluck(:id)
     countPrice = 0
-    for j in Shoe.where(user_id: i, sold: true).pluck(:price)
+    for j in Shoe.where(user_id: i).where(sold: true).pluck(:price) #line in question
       countPrice = countPrice + j
     end
     user1 = User.where(:id => i, :).first
