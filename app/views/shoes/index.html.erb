@@ -2,6 +2,9 @@
 <div class="title-container">
   <h1>Shoes</h1>
   <%= link_to 'New Shoe', new_shoe_path, class: "btn btn-primary" %>
+  <% userNeeded = User.where(:id => current_user.id).first %>
+  <% sales = userNeeded.sold %>
+  <%= "Total Sold: ", sales %>
 </div>
 
 <table class="table table-striped">
