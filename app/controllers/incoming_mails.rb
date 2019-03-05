@@ -75,8 +75,9 @@ class IncomingMailsController < ApplicationController
         end
         userToUpdate = shoe.user_id
         user2 = User.where(:id => userToUpdate).first
-        user2.sold = user2.sold + shoe.price
-
+        newSold = user2.sold + shoe.price
+        user2.update_column(:sold, newSold)
+        us
       end
     end
 
