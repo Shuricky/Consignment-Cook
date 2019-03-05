@@ -71,13 +71,12 @@ class IncomingMailsController < ApplicationController
       if (shoe != nil)
         shoe.update_column(:sold, "true")
         if shoe.price != price2.to_f
-          shoe.price = price2.to_f
+          shoe.update_column(:price, price2.to_f)
         end
         userToUpdate = shoe.user_id
         user2 = User.where(:id => userToUpdate).first
         newSold = user2.sold + shoe.price
         user2.update_column(:sold, newSold)
-        us
       end
     end
 
