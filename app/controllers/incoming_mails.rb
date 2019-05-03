@@ -44,6 +44,7 @@ class IncomingMailsController < ApplicationController
           if (Shoe.where(:stockId => tokens[i+1].chomp(",")).present? == false)
             Rails.logger.debug "something"
             shoe.update_column(:stockId, tokens[i+1].chomp(","))
+          end
         end
       end
 
