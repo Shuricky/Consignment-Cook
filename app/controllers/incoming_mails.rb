@@ -55,7 +55,7 @@ class IncomingMailsController < ApplicationController
         shoe.update_column(:stockId, stock)
       end
 =end
-    elsif params[:headers]['Subject'].strip == "Your shoes have sold!"
+    elsif params[:headers]['Subject'].strip == "Fwd: Your shoes have sold!"
       #stock = params[:plain].scan(/^(?:Stock \# )(.+)/).flatten
 
       #stock[0].chomp!
