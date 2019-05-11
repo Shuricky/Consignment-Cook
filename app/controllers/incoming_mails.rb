@@ -31,9 +31,15 @@ class IncomingMailsController < ApplicationController
       spot2 = tokens.index("#")
 
       Rails.logger.debug tokens[spot2-9]
+      Rails.logger.debug tokens[spot2-10]
       Rails.logger.debug tokens[spot2-7]
 
-      style = tokens[spot2-9].strip
+      if (tokens[spot2-10] == "Style")
+        style = tokens[spot2-9].strip
+      else
+        style = tokens[spot2-10] + " " + tokens[spot2-9]
+      end
+      Rails.logger.debug style
       price = tokens[spot2-7].delete("$").strip
 
 
