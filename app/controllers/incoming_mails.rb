@@ -56,7 +56,7 @@ class IncomingMailsController < ApplicationController
         if(shoe != nil)
           if (Shoe.where(:stockId => tokens[i+1].chomp(",")).present? == false)
             Rails.logger.debug "something"
-            shoe.update_column(:stockId, tokens[i+1].chomp(","))
+            shoe.update_attribute(:stockId, tokens[i+1].chomp(","))
           end
         end
       end
@@ -84,14 +84,14 @@ class IncomingMailsController < ApplicationController
 
       shoe = Shoe.where(:stockId => stock).first
       if (shoe != nil)
-        shoe.update_column(:sold, "true")
+        shoe.update_attribute(:sold, "true")
         if shoe.price != price2.to_f
-          shoe.update_column(:price, price2.to_f)
+          shoe.update_attribute(:price, price2.to_f)
         end
         userToUpdate = shoe.user_id
         user2 = User.where(:id => userToUpdate).first
         newSold = user2.sold + shoe.price
-        user2.update_column(:sold, newSold)
+        user2.update_attribute(:sold, newSold)
       end
     end
 
