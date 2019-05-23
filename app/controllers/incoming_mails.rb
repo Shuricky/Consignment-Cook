@@ -41,11 +41,12 @@ class IncomingMailsController < ApplicationController
       end
       Rails.logger.debug style
       price = tokens[spot2-7].delete("$").strip
+      price.tr!(',', '')
 
 
 
       for i in spot2..(quantityNum.to_i)+(spot2)-1
-        shoe = Shoe.where(:sku => style, :price => price.to_f, :size => sizeOther, :sold => "false", :stockId => nil).first
+        shoe = Shoe.where(:sku.upcase => style.upcase, :price => price.to_f, :size => sizeOther, :sold => "false", :stockId => nil).first
         if(shoe != nil)
           if (Shoe.where(:stockId => tokens[i+1].chomp(",")).present? == false)
             Rails.logger.debug "something"
