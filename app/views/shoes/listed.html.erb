@@ -20,7 +20,9 @@
   </thead>
 
   <tbody>
-    <% @shoes.each do |shoe| %>
+    <%# @shoes.each do |shoe| %>
+    <% shoesInOrder = Shoe.order('created_at DESC')%>
+    <% shoesInOrder.each do |shoe| %>
     <% if shoe.user_id == current_user.id && shoe.sold == false%>
 
       <tr>

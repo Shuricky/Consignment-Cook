@@ -19,7 +19,9 @@
   </thead>
 
   <tbody>
-    <% @shoes.each do |shoe| %>
+    <% shoesInOrder = Shoe.order('updated_at DESC')%>
+    <%# @shoes.each do |shoe| %>
+    <% shoesInOrder.each do |shoe| %>
     <% if shoe.user_id == current_user.id && shoe.sold == true%>
 
       <tr>
