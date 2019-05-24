@@ -8,19 +8,19 @@ require 'mime'
 
 task :weeklyReport => :environment do
   csv = ["Saturday"].to_csv
-  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 168.hours)..(Time.now - 144.hours)).order(:updated_at :desc).to_csv
+  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 168.hours)..(Time.now - 144.hours)).order('updated_at DESC').to_csv
   csv << ["Sunday"].to_csv
-  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 144.hours)..(Time.now - 120.hours)).order(:updated_at :desc).to_csv
+  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 144.hours)..(Time.now - 120.hours)).order('updated_at DESC').to_csv
   csv << ["Monday"].to_csv
-  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 120.hours)..(Time.now - 96.hours)).order(:updated_at :desc).to_csv
+  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 120.hours)..(Time.now - 96.hours)).order('updated_at DESC').to_csv
   csv << ["Tuesday"].to_csv
-  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 96.hours)..(Time.now - 72.hours)).order(:updated_at :desc).to_csv
+  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 96.hours)..(Time.now - 72.hours)).order('updated_at DESC').to_csv
   csv << ["Wednesday"].to_csv
-  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 72.hours)..(Time.now - 48.hours)).order(:updated_at :desc).to_csv
+  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 72.hours)..(Time.now - 48.hours)).order('updated_at DESC').to_csv
   csv << ["Thursday"].to_csv
-  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 48.hours)..(Time.now - 24.hours)).order(:updated_at :desc).to_csv
+  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 48.hours)..(Time.now - 24.hours)).order('updated_at DESC').to_csv
   csv << ["Friday"].to_csv
-  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 24.hours)..Time.now).order(:updated_at :desc).to_csv
+  csv << Shoe.where(:sold => "true").where(:updated_at => (Time.now - 24.hours)..Time.now).order('updated_at DESC').to_csv
 
   OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'.freeze
   APPLICATION_NAME = 'Gmail API Ruby Quickstart'.freeze
