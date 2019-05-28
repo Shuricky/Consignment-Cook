@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
 
-  get '/shoes/import', to: 'shoes#index'
+  get 'shoes/import', to: 'shoes#index'
 
 
  #resources :shoes
