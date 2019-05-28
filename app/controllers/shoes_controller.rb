@@ -8,7 +8,7 @@ class ShoesController < ApplicationController
   #before_action :require_login
 
 
-  
+
   before_action :set_shoe, only: [:show, :edit, :update, :destroy]
 
 
@@ -61,6 +61,12 @@ class ShoesController < ApplicationController
   def sold
     @shoes = Shoe.all
   end
+
+  def import
+   if params[:file]
+     Shoe.import(params[:file])
+   end
+ end
 
   private
     def set_shoe

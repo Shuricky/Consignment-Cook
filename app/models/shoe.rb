@@ -1,5 +1,6 @@
 class Shoe < ApplicationRecord
 
+  require 'csv'
   belongs_to :user
   validates :sku, presence: true
   validates :price, presence: true, numericality: true
@@ -19,4 +20,11 @@ class Shoe < ApplicationRecord
   def self.csv_header_row
     %w(Style_Number Size Quantity Price)
   end
+
+  def self.import(file)
+		CSV.foreach(file.path, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
+				Shoe.create!(row.to_hash)
+		end
+	end
+
 end
