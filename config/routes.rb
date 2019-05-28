@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'shoes/import', to: 'shoes#index'
+  
 
   resources :incoming_mails, only: [:create]
 
