@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :shoes, only: [:listed, :sold, :index, :show, :new, :create]
   end
 
+  resources :shoes do
+    collection{ post :import}
+  end
 
 
  #resources :shoes
