@@ -65,8 +65,8 @@ class ShoesController < ApplicationController
   def import
    if params[:file]
      Shoe.import(params[:file])
-     
    end
+   @shoes = Shoe.all
  end
 
   private
