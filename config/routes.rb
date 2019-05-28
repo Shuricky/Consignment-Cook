@@ -16,12 +16,10 @@ Rails.application.routes.draw do
   end
 
   authenticate :user do
-    resources :shoes, only: [:listed, :sold, :index, :show, :new, :create]
+    resources :shoes, only: [:listed, :sold, :index, :show, :new, :create, :import]
   end
 
-  resources :shoes do
-    collection{ post :import}
-  end
+
 
 
  #resources :shoes
