@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :shoes, only: [:listed, :sold, :index, :show, :new, :create, :import]
   end
 
-  root to: "shoes#index"
+
 
 
  #resources :shoes
