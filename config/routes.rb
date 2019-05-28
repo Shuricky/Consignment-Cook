@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :shoes do
       collection do
-        get :listed, :sold,
+        get :listed, :sold
       end
     end
   end
