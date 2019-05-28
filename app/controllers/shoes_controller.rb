@@ -65,7 +65,7 @@ class ShoesController < ApplicationController
   def import
    if params[:file]
      Shoe.import(params[:file])
-     redirect_to action: "index"
+     
    end
  end
 
