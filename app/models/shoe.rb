@@ -21,9 +21,11 @@ class Shoe < ApplicationRecord
     %w(Style_Number Size Quantity Price)
   end
 
-  def self.import(file)
+  def self.import(file,userId)
 		CSV.foreach(file.path, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
-				Shoe.create!(row.to_hash)
+      for i in 1..row["quantity"]
+				Shoe.create!(sku: row["style number"] , quantity: 1, size: row["size"], price: row["price"], user_id: userId, sold: false)
+      end
 		end
 	end
 
