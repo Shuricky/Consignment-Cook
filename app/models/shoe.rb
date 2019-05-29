@@ -27,8 +27,8 @@ class Shoe < ApplicationRecord
       Rails.logger.debug row['size']
       Rails.logger.debug row['quantity']
       Rails.logger.debug row['price']
-      for i in 1..row['quantity']
-				Shoe.create!(sku: row['style number'] , quantity: 1, size: row['size'], price: row['price'], user_id: userId, sold: false)
+      for i in 1..row['quantity'].to_i
+				Shoe.create!(sku: row['style number'] , quantity: 1, size: row['size'], price: row['price'].to_f, user_id: userId, sold: false)
       end
 		end
 	end
