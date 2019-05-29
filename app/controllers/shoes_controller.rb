@@ -65,7 +65,7 @@ class ShoesController < ApplicationController
   def import
    if params[:file]
      Shoe.import(params[:file], current_user.id)
-     redirect_to "/shoes", notice: "Activity Data imported!"
+     redirect_to "/shoes"
    end
  end
 
