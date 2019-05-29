@@ -23,6 +23,10 @@ class Shoe < ApplicationRecord
 
   def self.import(file,userId)
 		CSV.foreach(file.path, { encoding: "UTF-8", headers: true, header_converters: :symbol, converters: :all}) do |row|
+      Rails.logger.debug row["style number"]
+      Rails.logger.debug row["size"]
+      Rails.logger.debug row["quantity"]
+      Rails.logger.debug row["price"]
       for i in 1..row["quantity"]
 				Shoe.create!(sku: row["style number"] , quantity: 1, size: row["size"], price: row["price"], user_id: userId, sold: false)
       end
