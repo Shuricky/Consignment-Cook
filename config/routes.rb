@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  
+
 
   resources :incoming_mails, only: [:create]
 
@@ -12,16 +12,20 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :shoes do
       collection do
-        get :listed, :sold, :import
+        get :listed, :sold
       end
     end
   end
 
   authenticate :user do
-    resources :shoes, only: [:listed, :sold, :index, :show, :new, :create, :import]
+    resources :shoes, only: [:listed, :sold, :index, :show, :new, :create]
   end
 
+  resources :shoes do
+    collection { post :import }
+  end
 
+  root to: "shoes#index"
 
 
 
