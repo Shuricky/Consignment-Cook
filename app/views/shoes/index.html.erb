@@ -34,7 +34,7 @@
         <td><%= shoe.sku %></td>
         <td><%= shoe.size %></td>
         <td><%= 1 %></td>
-        <td><%= shoe.price %></td>
+        <td><%= number_to_currency(shoe.price) %></td>
         <% if shoe.sold == true %>
           <td><%='Sold'%></td>
         <% else %>

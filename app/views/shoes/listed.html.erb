@@ -29,7 +29,7 @@
         <td><%= shoe.sku %></td>
         <td><%= shoe.size %></td>
         <td><%= 1 %></td>
-        <td><%= shoe.price %></td>
+        <td><%= number_to_currency(shoe.price) %></td>
         <td>Listed</td>
         <td><%=shoe.stockId%></td>
         <td><%= link_to 'Show', shoe %></td>
