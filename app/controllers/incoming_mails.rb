@@ -85,8 +85,10 @@ class IncomingMailsController < ApplicationController
       shoe = Shoe.where(:stockId => stock).first
       if (shoe != nil)
         shoe.update_attribute(:sold, "true")
-        if shoe.price != price2.tr!(',', '').to_f
-          shoe.update_attribute(:price, price2.tr!(',', '').to_f)
+        Rails.logger.debug shoe.price
+        Rails.logger.debug price2.tr(',', '').to_f
+        if shoe.price != price2.tr(',', '').to_f
+          shoe.update_attribute(:price, price2.tr(',', '').to_f)
         end
         userToUpdate = shoe.user_id
         user2 = User.where(:id => userToUpdate).first
