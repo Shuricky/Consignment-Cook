@@ -47,10 +47,11 @@ class IncomingMailsController < ApplicationController
 
       for i in spot2..(quantityNum.to_i)+(spot2)-1
         #shoe = Shoe.where(:sku => style.upcase, :price => price.to_f, :size => sizeOther, :sold => "false", :stockId => nil).first
+        #where(:size => sizeOther).
         shoe = Shoe.where(:price => price.to_f).
-        where(:size => sizeOther).
         where(:sold => "false").
         where(:stockId => nil).
+        where("upper(size) = ?", sizeOther.upcase).
         where("upper(sku) = ?", style.upcase).first
 
         if(shoe != nil)
